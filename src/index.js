@@ -12,11 +12,13 @@ import configureStore from './store/configureStore'
 
 const store = configureStore();
 
+const html = (<Provider store={store}>
+  <div className='app'> {/* обёртка для применения стилей*/}
+    <App />
+  </div>
+</Provider>);
+
 render(
-  <Provider store={store}>
-    <div className='app'> {/* обёртка для применения стилей*/}
-      <App />
-    </div>
-  </Provider>,
+  html,
   document.getElementById('root')
 );
