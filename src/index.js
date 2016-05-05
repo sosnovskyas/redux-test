@@ -13,11 +13,13 @@ import configureStore from './store/configureStore'
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
 
-const html = (<Provider store={store}>
-  <div className='app'> {/* обёртка для применения стилей*/}
-    <App />
-  </div>
-</Provider>);
+const html = (
+  <Provider store={store}>
+    <div className='app'> {/* обёртка для применения стилей*/}
+      <App />
+    </div>
+  </Provider>
+);
 
 render(
   html,

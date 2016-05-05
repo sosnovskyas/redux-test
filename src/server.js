@@ -8,12 +8,13 @@ import express from 'express'
 import React from 'react'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import counterApp from './reducers'
+import Reducers from './reducers'
 import App from './containers/App'
 
 import {renderToString} from 'react-dom/server'
 
-// import {html} from './index'
+// import { RoutingContext, match } from 'react-router'
+// import createMemoryHistory from 'history/lib/createMemoryHistory'
 
 // серверные констаныт
 const app = express();
@@ -40,7 +41,7 @@ function renderFullPage(html, initialState) {
 
 function handleRender(req, res) {
   // Create a new Redux store instance
-  const store = createStore(counterApp);
+  const store = createStore(Reducers);
 
   // Render the component to a string
   const html = renderToString(<Provider store={store}>
