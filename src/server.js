@@ -43,7 +43,6 @@ function handleRender(req, res) {
   const store = createStore(counterApp);
 
   // Render the component to a string
-
   const html = renderToString(<Provider store={store}>
     <div className='app'> {/* обёртка для применения стилей*/}
       <App />
@@ -60,25 +59,6 @@ function handleRender(req, res) {
 
 
 app.use(express.static(distPath + '/static/'));
-
-/*app.use((req, res) => {
- const store = reduxReactRouter({ routes, createHistory: createMemoryHistory })(createStore)(reducer);
- const query = qs.stringify(req.query);
- const url = req.path + (query.length ? '?' + query : '');
-
- store.dispatch(match(url, (error, redirectLocation, routerState) => {
- if (error) {
- console.error('Router error:', error);
- res.status(500).send(error.message);
- } else if (redirectLocation) {
- res.redirect(302, redirectLocation.pathname + redirectLocation.search);
- } else if (!routerState) {
- res.status(400).send('Not Found');
- } else {
- res.status(200).send(getMarkup(store));
- }
- }));
- });*/
 
 app.use(handleRender);
 

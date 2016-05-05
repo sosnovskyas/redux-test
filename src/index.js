@@ -10,7 +10,8 @@ import './app.css'
 import App from './containers/App'
 import configureStore from './store/configureStore'
 
-const store = configureStore();
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore(initialState);
 
 const html = (<Provider store={store}>
   <div className='app'> {/* обёртка для применения стилей*/}
